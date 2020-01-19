@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Video Streamings Protocol</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-dark fixed-top">
+        <a class="navbar-brand" id="nav">RSC 2019/2020</a>
+        <form class="form-inline">
+            <a class="nav-item nav-link" href="#">HLS</a>
+            <a class="nav-item nav-link" href="#">MPEG-DASH</a>
+            <a class="nav-item nav-link" href=".././RTMP/template.html">RTMP</a>
+            <a class="nav-item nav-link" href="template.html">RTSP+RTP</a>
+            <a class="nav-item nav-link" href="#">WebRTC</a>
+        </form>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Protocol Presentation
+            </div>
+            <div class="card-body">
+                <h1 class="card-title">RTSP/RTP</h1>
+
+                   <p class="flotte">
+                        <img class="img" src="images/protocol_stack.png" alt="protocol">
+                   </p>
+                   <p class="text">
+                    <h4>What is RTSP/RTP ?</h4>
+                    <p class="text">
+                        RTSP and RTP are two protocols that function together to enable the streaming of media, audio or video.
+                    </p>
+                    <p class="text" >
+                      The first version of RTSP submitted to IETF was in 1996 and developed by RealNetworks, Netscape and Columbia University. Its standardization happened in 1998 published as RFC 2326 in 1998, and the second release was in 2016 as RFC 7826 in 2016.
+                      <br>
+                      RTSP is an application-level protocol that aims at controlling the streaming of a media. The media can be live-streamed or a stored media. The protocol enables to differentiate sessions of streaming, each session having its own parameters such as unicast or multicast for instance.
+                      It is also relevant to note that the ability to initialize multicast session of streaming make this protocol the principal choice for certain applications such as IP cameras or Television using the internet.
+                    </p>
+                   <p class="text" >
+                     RTP is a protocol that ensures the transportation of media data. It is based upon the use of UDP and provide no bitrate scalability of the streaming.
+                     The stream of data is enhanced by the use of a control protocol (RTCP) that monitors the data transmission. RTCP ensures the quality of service and may compensate for delays.
+                   </p>
+
+                    <br>
+
+                    <hr>
+                    <h4>Details on use cases/fields of application</h4>
+                    <img class="img2" src="images/unimulti.png" alt="unimulti">
+                    <p>
+                        Nowadays RTSP/RTP is very commonly used with video surveillance devices such as IP cameras, it has become the standard for this type of usage. It is designed to efficiently broadcast media content to large groups, making it a relevant choice for applications such as internet radio or television.
+                    </p>
+
+                    <hr>
+                    <h4>Technical specifications : exchanges during a communication</h4>
+                    <p class="flotte">
+                        <img class="img3" src="images/exchanges.png" alt="exchanges">
+                       </p>
+                       <p class="text">
+                        <h5>Different phases of a communication :</h5>
+                        <p class="text">
+                            <b>Describe :</b> This method constitutes the initialization phase of RTSP. During this phase a pair of messages are exchanged.
+                            The first one is sent by the client and aims at demanding a retrieving of the desired media description. It contains the request URL of the media and may also contain an Accept header which specifies the description format the client can process.
+                            The second one contains the description itself. The response contains all the media initialization information.
+                            It is also important to note that, while a media initialization phase is required for any RTSP-based system, the use of the “Describe” method is not mandatory. Two other ways are possible. The first being the use of other protocol such as HTTP or email attachment. The second one being the use of command line or standard input.
+                            <br>
+                        </p>
+                        <p class="text">
+                            <b>Setup :</b> This method constitutes the phase in which the transport mechanism that is going to be used for streaming the media is decided. The information exchanged are the transport initialization information, such as the ports used, the streaming protocol, e.g. RTP, or unicast/multicast.
+                            The first message being sent is sent from the client and contains, under the “transport” header, the parameters the client wishes to use.
+                            The second one sent is the response from the server which contains the transport parameters selected by the server and a session ID that is then going to be used by the client.
+                            <br>
+                        </p>
+                        <p >
+                           <b>Play :</b> This method tells the server to starts sending data using the parameters decided by the SETUP method.
+                            The first message is a play request which contains the range of the media that is going to be played. It may also contain a time parameter, which is going to be the date the playback is started.
+                            The reply message is only sent in the case of on-demand streaming, it contains the range in the media that is going to be played.
+                            <br>
+                        </p>
+                        <p>
+                            <b>RTP audio/video : </b> The RTP audio/video is not a method like Play,Pause,etc... but it defines the beginning of the media stream.
+      Number of media streams in an RTSP session varies depending on situations as described below :
+     <br> Case 1 : In a situation where audio codec is disabled and a video stream is requested:
+       Each RTSP session delivers just one video stream instances at a time.
+      <br>Case 2 : In a situation where audio codec is enabled and an audio stream is requested:
+       Each RTSP session delivers just one audio stream at a time.
+      <br>Case 3 : In a situation where audio codec is enabled and just a video stream is requested:
+       Each RTSP session delivers two media streams at a time — not only a video stream but also an audio stream.
+                            <br>
+</p>
+                        <p >
+                            <b>Pause : </b>This method is used to temporarily interrupt the media stream. The stream can be resumed by sending a play request. Sending a play request without specifying a range to be played will resume the stream at the time it was paused.
+                            The message sent by the client tells the server to stop the stream. It contains the session ID.
+                            The message sent by the server is an acknowledgement of the pause and contains the date it was paused.
+                            <br>
+                        </p>
+                        <p >
+                            <b>Teardown : </b>This request stops the streaming of the media and frees the session ID. the server responds “OK” to the request.
+
+                            <p >
+                        <b>RTCP (Real-time Transport Control Protocol)</b> works hand in hand with RTP. RTCP is used to send control packets. RTCP distinguishes several types of packets called reports: sender report, receiver report, source description, and goodbye. The primary function is to provide feedback on the quality of service being provided by RTP. It transports statistics and information such as octet and packet counts, packet loss, jitter, and round-trip time. It gives information to control QoS parameters.                       </p>
+                    </p>
+
+                    <hr>
+                    <h4>Advantages or Disadvantages of RTSP</h4>
+                    <p> <h6>Advantages :</h6>
+                        Used internationally
+                        <br>Use HTTP authentication methods, transport and network layer security mechanism
+                        <br>Adapted to all media data
+                        <br>Low-latency (about 2 seconds) and requires no buffering
+                        <br>Allow for multi-servers for multicast and unicast network
+                        <br>Interoperability between clients and servers
+                        <br><br>
+                        <h6>Disadvantages :</h6>
+                        No more supported by browsers
+                        <br>Require a specific streaming server
+
+                    </p>
+                    <br>
+                    <hr>
+                    <h4>Existing projects + links to them </h4>
+                    <p> RTSP was standardized by the Multiparty Multimedia Session Control Working Group (MMUSIC WG) of the Internet Engineering Task Force (IETF).                </p>
+                    <p>1st version (1998) :  <a href="https://tools.ietf.org/html/rfc2326"> RFC 2326</a></p>
+                    <p>2nd version (2016) : <a href="https://tools.ietf.org/html/rfc7826"> RFC 7826</a></p>
+                    <hr>
+
+
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Demonstration
+            </div>
+            <div class="card-body">
+                <p class="card-text">As can be seen, there is no video web player here. That is why RTSP is no longer directly supported by a video web player.
+                    <br> Until 2015, there was a solution adding RTSP in Chrome with a VLC web plugin but Google removed it. <br>
+                    Nowadays, in order to see a RTSP flow, an external player as VLC is required but it can't be directly included into a web page.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                HowTo
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Introduction </h4>
+              In this part, a protocol on how to generate a RTSP stream and then how to read data from this stream is presented. Two methods are going to be introduced, one using command lines and one using VLC interface.
+              Each method will eventually allow the reader to stream then play any MP4 format video. So please follow the instructions carefully.
+
+                                  <hr>
+                <h4 class="card-title">Prerequisites</h4>
+
+                <p class="card-text">Install VLC via this link : <a href="https://www.videolan.org/vlc/index.fr.html"> Download VLC</a> <br>
+                    Make sure to have a MP4 video available in the current folder.
+                    <h5> <u> Version with VLC interface </u> </h5>
+                    <p class="card-text">1 - Install VLC via this link on Windows or Linux : <a href="https://www.videolan.org/vlc/index.fr.html"> Download VLC</a> <br>
+                        2 - Make sure that you have a MP4 video available in the current folder.
+                    </p>
+                    <h5> <u> Command line version </u> </h5>
+                    <p class="card-text"> 1 - Use a Linux distribution <br>
+                      2 - Install ffmpeg on your computer using the following command lines in your terminal : <br>
+                      <code>sudo apt-get update <br>
+                            sudo apt-get install ffmpeg
+                      </code>
+                      <br>
+                      3 - Make sure to have that you MP4 video available in the terminal folder.
+                    </p>
+
+
+                                        <hr>
+                    <h4 class="card-title"> Deployment </h4>
+                    There isn't any deployment required.
+
+
+                                        <hr>
+                    <h4 class="card-title">Demonstration</h4>
+                    <h5> <u> Version with VLC interface </u> </h5>
+
+
+                    <h6 class="card-title">1. Streaming in RTSP (server)</h6>
+
+                    Open VLC.
+                    <br>
+                    Select <b>Media</b> then <b>Stream</b>. This window should appear : 
+                    <br>
+                    <br><img class="imgdemo" src="images/demo1.png" alt="demo">
+                    <br>Select <b>+ Add</b> and select the file you want to stream. The example will be done with an MP4 file.
+                    <br> Then select <b>Stream</b>. 
+                    <br>
+                    <br>The following window should appear:
+                    <br>
+                    <br><img class="imgdemo" src="images/demo2.png" alt="demo">
+                    <br>Select <b>Next</b>.
+                    <br>
+
+                    <br> Then, on this window chose as <b>New destination</b> <i>RTSP</i> :
+                    <br>
+                    <br><img class="imgdemo" src="images/demo3.png" alt="demo">
+                    <br>
+                    <br> You will now have to select the port and the path. 
+                    <br> You can chose the <i>8554 </i>(classic port for RTSP).
+                    <br> As path, you can add <i>/stream </i>as shown below :
+                    <br>
+                    <br><img class="imgdemo" src="images/demo4.png" alt="demo">
+                    <br>
+                    <br>Then chose the transcoding option. 
+                    <br>Here for MP4, select the <i>H.264</i> codec for the video part and <i>MP3</i> for the audio part :
+                    <br>
+                    <br><img class="imgdemo" src="images/demo5.png" alt="demo">
+                    <br>
+                    <br> If you want to stream undefinitely, add the command <i>--loop</i> at the end of the command.
+                    <br> Select <b>Next</b>. 
+                    <br>
+                    <br><img class="imgdemo" src="images/demo51.png" alt="demo">
+                    <br>
+                    <br>Now you stream is available at : <i>rtsp://127.0.0.1:8554/stream</i>
+                    <br>
+                    <br>
+                    <h6 class="card-title">2. Watch your video in RTSP (client) </h6>
+                    Open another VLC client.
+                    <br>
+                    To read your rtsp stream select <b>Open network stream</b>.
+                    <br>
+                    Enter the path decided before  <i>rtsp://127.0.0.1:8554/stream.</i>
+                    <br>
+                    <br>
+                    <img class="imgdemo" src="images/demo6.png" alt="demo">
+                    </p>
+                    Now the video should be watchable.
+                    <br><br>
+
+                    <h5> <u> Command line version </u> </h5>
+                    <h6 class="card-title">1. Streaming in RTSP (server)</h6>
+                    1 - Open a terminal. <br>
+                    2 - Go to the folder where your video is stored.  <br>
+                    3 - Convert your video into a unicast RTSP stream using the following command :  <br>
+                    <code>
+                      vlc -vvv test.mp4 --sout '#rtp{sdp=rtsp://127.0.0.1:8554/stream}'
+                      '#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100,scodec=none}' no-sout-all sout-keep
+                      --loop
+                    </code> <br>
+                    3 bis - If you want to convert your video into a multicast stream use this command instead :  <br>
+                    <code>
+                        vlc -vvv test.mp4 --sout '#rtp{dst=230.0.100.10,port=31300,sdp=rtsp://127.0.0.1:8554/stream}'
+                        '#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100,scodec=none}' no-sout-all sout-keep --rtsp-mcast
+                        --loop
+                    </code>
+                <br><br>
+                    <h6 class="card-title">2. Watch your video in RTSP (client) </h6>
+                    4 - In another terminal, read the stream on ffplay with this command : <br>
+                    <code>
+                    ffplay -i rtsp://127.0.0.1:8554/stream
+                  </code>
+                    </p>
+                    <h5> <u>Results </u> </h5>
+
+                    You should be able to see the different packets thanks to <b>Wireshark</b> as shown below :
+
+                    <br><img class="img" src="images/wireshark_rtsp.PNG" alt="demo">
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+    Bibliography
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    The Definitive Guide to HTML5 Video - Silvia Pfeiffer,  2010
+                    <br>
+                    Live video in browser - https://medium.com/@cybillshepherd1985/live-video-in-browser-e2a8d534c182, 2018
+                 </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
