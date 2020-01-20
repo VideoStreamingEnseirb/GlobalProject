@@ -18,7 +18,7 @@
 	<nav class="navbar navbar-light bg-dark fixed-top">
 		<a class="navbar-brand" id="nav">RSC 2019/2020</a>
 		<form class="form-inline">
-            <a class="nav-item nav-link" href="#">HLS</a>
+            <a class="nav-item nav-link" href="./../../HLS/index.html">HLS</a>
             <a class="nav-item nav-link" href="#">MPEG-DASH</a>
             <a class="nav-item nav-link" href="./../../RTMP/template.html">RTMP</a>
             <a class="nav-item nav-link" href="./../../RTSP-RTP/template.html">RTSP+RTP</a>
@@ -85,7 +85,7 @@
 						  modal.style.display = "none";
 						}
 						</script>
-							
+
 						</p>
 						<p>
 
@@ -162,7 +162,7 @@
 						  modal.style.display = "none";
 						}
 						</script>
-							
+
 						</p>
 						<p>
 							The protocol stack of MPEG-DASH can be divided into two possibilities: one connected and one
@@ -185,11 +185,11 @@
 							For more information about IP, TCP, UDP, TLS, find it in the different RFCs: <br>
 							<ul>
 								<li><a href="https://www.rfc-editor.org/info/rfc791">IPv4: Internet Protocol version 4</a></li>
-							
+
 								<li><a href="https://www.rfc-editor.org/info/rfc793">TCP: Transmission Control Protocol</a></li>
 
 							<li><a href="https://www.rfc-editor.org/info/rfc768">UDP: User Datagram Protocol</a> </li>
-							
+
 							<li><a href="https://www.rfc-editor.org/info/rfc5246">TLS v1.2: Transport Layer Security
 								version 1.2</a> </li>
 							</ul>
@@ -236,7 +236,7 @@
 						  modal.style.display = "none";
 						}
 						</script>
-					
+
 					<br>
 					<p>
 					<br>
@@ -294,7 +294,7 @@
 						  modal.style.display = "none";
 						}
 						</script>
-							
+
 						</p>
 						<p>
 
@@ -415,7 +415,7 @@
 					<h5>Existing projets</h5>
 
 					<div class="texte-illustration">
-						<p> 
+						<p>
 							<ul>
 							  <li>
 							  	<a href="https://github.com/Dash-Industry-Forum/dash.js/wiki/"> Dash.js </a> (framework for building video and audio players that play back MPEG-DASH content using client-side JavaScript libraries)
@@ -532,10 +532,10 @@
 						<ul>
 							<li>
 								<h5> Player Prerequisites </h5>
-								We used the library DashJS to settle our dash player via JavaScript and 
+								We used the library DashJS to settle our dash player via JavaScript and
 								<a href="https://caniuse.com/#feat=mediasource"> compliant browsers</a>. Have a look on their
-								<a href="https://github.com/Dash-Industry-Forum/dash.js"> GitHub</a> if you want more information. 
-								<b> If you have a compliant browser, no need to set up anything.</b> 
+								<a href="https://github.com/Dash-Industry-Forum/dash.js"> GitHub</a> if you want more information.
+								<b> If you have a compliant browser, no need to set up anything.</b>
 							</li>
 							<br>
 							<li>
@@ -552,7 +552,7 @@
 									<code>sudo apt install apache2</code> <br>
 									Verify the configuration :
 									<code>apache2 -version</code> <br>
-									Start the Apache2 service : 
+									Start the Apache2 service :
 									<code>sudo systemctl startup apache2</code>
 								</p>
 
@@ -566,11 +566,11 @@
 								<h5> Player Deployment: Integrate a dash player in your website </h5>
 
 
-								You can integrate the dash player simply by adding those lines (in an html file). 
+								You can integrate the dash player simply by adding those lines (in an html file).
 								<code>
 									touch index.html
 								</code> <br>
-								You can modify the MPD url to change the video played. 
+								You can modify the MPD url to change the video played.
 								<br>
 								<pre>
 								<code>
@@ -596,7 +596,7 @@
 								<h5> Server Deployment </h5>
 								<ul>
 									<li>
-										
+
 										<h5> Create MPD file and DASHable segments</h5>
 										<p>
 											Go into your working directory:
@@ -658,15 +658,15 @@
 	    AllowOverride all
 	    Require all granted
 &lt;/Directory>
-&lt;Directory /var/www/>  
-        Options Indexes FollowSymLinks  
-        AllowOverride all  
-        Allow from all  
-        Require all granted  
-        Header set Access-Control-Allow-Origin "*"  
-        Header set Access-Control-Allow-Headers "*" 
-        Header set Access-Control-Allow-Methods "*"  
-        Header set Access-Control-Request-Headers "*"  
+&lt;Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride all
+        Allow from all
+        Require all granted
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Headers "*"
+        Header set Access-Control-Allow-Methods "*"
+        Header set Access-Control-Request-Headers "*"
 &lt;/Directory>
 											</code></pre>
 											Activate header module: <code> a2enmod headers</code>
@@ -688,11 +688,11 @@
 						<h3> Demonstration</h3>
 						Open the <i>idex.html</i> file and envoy your video with MPEG-DASH.
 					</li>
-					
+
 
 				</ul>
-				
-				
+
+
 
 				<br>
 				<h3 class="card-title">Link to GitHub repository</h3>
