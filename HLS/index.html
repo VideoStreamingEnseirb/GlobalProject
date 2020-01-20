@@ -2,11 +2,12 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>HTTP Live Streaming</title>
 </head>
@@ -15,10 +16,10 @@
     <nav class="navbar navbar-light bg-dark fixed-top">
         <a class="navbar-brand" id="nav" href="../home.html">RSC 2019/2020</a>
         <form class="form-inline">
-            <a class="nav-item nav-link" href="./index.html">HLS</a>
-            <a class="nav-item nav-link" href="./../MPEG-DASH/website/index.html">MPEG-DASH</a>
-            <a class="nav-item nav-link" href="./../RTMP/template.html">RTMP</a>
-            <a class="nav-item nav-link" href="./../RTSP-RTP/template.html">RTSP+RTP</a>
+            <a class="nav-item nav-link" href="index.html">HLS</a>
+            <a class="nav-item nav-link" href="../MPEG-DASH/website/index.html">MPEG-DASH</a>
+            <a class="nav-item nav-link" href="../RTMP/template.html">RTMP</a>
+            <a class="nav-item nav-link" href="../RTSP-RTP/template.html">RTSP+RTP</a>
             <a class="nav-item nav-link" href="#">WebRTC</a>
         </form>
     </nav>
@@ -337,7 +338,7 @@
             <br>
 
             <br>
-            <li>To verify whether this step works you can try to reach <i>http://127.0.0.1/GlobalProject/HLS/index.html</i> and see whether the page is displayed or not.</li>
+            <li>To verify whether this step works you can try to reach <i>http://127.0.0.1/HLS/hls_index.html</i> and see whether the page is displayed or not.</li>
           </ul>
           <br>
           <h3>2.Manifest generation</h3>
@@ -384,7 +385,7 @@
           <h3>3. Demonstration </h3>
           <br>
           <p class="alinea">
-            If you have followed this HowTo step by step, everything should be working. You can know go to the <i>http://127.0.0.1/GlobalProject/HLS/index.html</i>.
+            If you have followed this HowTo step by step, everything should be working. You can know go to <i>http://127.0.0.1/HLS/hls_index.html</i>.
             <br>
             To see the HLS packets, you can type on the F12 keyboard key and then click on the network tab. An example is shown on the below figure, you can see the chunks (.ts files) that are downloaded and the different qualities of these chunks.
           </p>
