@@ -16,12 +16,12 @@
     <nav class="navbar navbar-light bg-dark fixed-top">
         <a class="navbar-brand" id="nav" href="../home.html">RSC 2019/2020</a>
         <form class="form-inline">
-                <a class="nav-item nav-link" href="./../HLS/index.html">HLS </a>
-                <a class="nav-item nav-link"  href="./../MPEG-DASH/website/index.html">MPEG-DASH</a>
-                <a class="nav-item nav-link" href="template.html">RTMP</a>
-                <a class="nav-item nav-link" href=".././RTSP-RTP/template.html">RTSP+RTP </a>
-                    <a class="nav-item nav-link"  href="#">WebRTC</a>
-            </form>
+            <a class="nav-item nav-link" href="./../HLS/index.html">HLS </a>
+            <a class="nav-item nav-link"  href="./../MPEG-DASH/website/index.html">MPEG-DASH</a>
+            <a class="nav-item nav-link" href="template.html">RTMP</a>
+            <a class="nav-item nav-link" href=".././RTSP-RTP/template.html">RTSP+RTP </a>
+                <a class="nav-item nav-link"  href="#">WebRTC</a>
+        </form>
     </nav>
     <div class="container">
         <div class="card">
@@ -33,8 +33,7 @@
                 <p class="card-text"> Initially developed by Macromedia, a graphics,
                     multimedia and web development software company and purchased in 2005 by
                     <a href='https://www.adobe.com/devnet/rtmp.html'>Adobe Inc.</a> the current rights owner,
-                    Real-Time Messaging Protocol (RTMP) was used for audio streaming. It quickly became popular and was
-                    used for video streaming as it provided, and still does, low-latency content.
+                    Real-Time Messaging Protocol (RTMP) was used for audio streaming. It quickly became popular and was used for video streaming as it provided, and still does, low-latency content.
                     The data stream flows between a source and a server, previously the Flash player and the
                     Flash server.
                     Each video and audio document is sent from the source to the server in a reversible small web
@@ -63,8 +62,7 @@
                     <p class="card-text">
                         Each RTMP connection is initialized with a handshake.
                         During the handshake, the client sends the C0 and C1 chunks. C0 chunks contain
-                        version information, while C1 chunks contain synchronization parameters and random data. C2
-                        chunks are sent
+                        version information, while C1 chunks contain synchronization parameters and random data. C2 chunks are sent
                         when the client receives an S1 and are utilized in the global chunk verification.
                         All chunked messages have the same size : 1 byte for C0 and S0, 1536 bytes for the
                         others.
@@ -90,24 +88,19 @@
         </div>
         <div class="card-deck">
             <div class="card">
-                <img id="image3" class="card-img-top" src="images/Protocol_stack.png" alt="">
+                <img id= "image3" class="card-img-top" src="images/Protocol_stack.png" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Figure 3
-                        <small>Protocol stack</small>
+                      <small>Protocol stack</small>
                     </h4>
                     <p class="card-text">
-                        In current usecases, RTMP is not delivered to the clients in its raw form.
-                        From left to right, streamers initiate a connection with a server in order to publish their
-                        content to be adapted for clients.
-                        Before being sent, RTMP payloads are split into default-sized fragments: 128 bytes for video and
-                        64 bytes for audio data.
-                        The stream is continuous from the streamer to the server that processes the RTMP stream and
-                        adapts it for the clients.
-                        Clients can now access the stream by requesting the server, the data will flow using HLS or Dash
-                        protocol.
-                        When encryption is needed (RTMPE is an encrypter version RTMP), these payloads are encrypted
-                        before being packetted by IP
-                        and decrypted after being decapsulated by IP.
+                      In current usecases, RTMP is not delivered to the clients in its raw form.
+                      From left to right, streamers initiate a connection with a server in order to publish their content to be adapted for clients.
+                      Before being sent, RTMP payloads are split into default-sized fragments: 128 bytes for video and 64 bytes for audio data.
+                      The stream is continuous from the streamer to the server that processes the RTMP stream and adapts it for the clients.
+                      Clients can now access the stream by requesting the server, the data will flow using HLS or Dash protocol.
+                      When encryption is needed (RTMPE is an encrypter version RTMP), these payloads are encrypted before being packetted by IP
+                      and decrypted after being decapsulated by IP.
                     </p>
                 </div>
             </div>
@@ -115,25 +108,17 @@
                 <div class="card-body">
                     <img class="card-img-top" src="images/ABS.png" alt="">
                     <h4 class="card-title">Figure 4
-                        <small>Adaptive Bitrate Streaming</small>
+                     <small>Adaptive Bitrate Streaming</small>
                     </h4>
-                    <p class="card-text">The user's bandwith can be highly variable, and in the case of non-adaptive
-                        bitrate
-                        streaming, the client manually choses the video quality settings regardless of her/his internet
-                        connection
-                        quality. This can be quite off-putting and annoying, especially for picky users who do not wish
-                        to
-                        re-set the video resolution whenever it starts buffering. With adaptive bitrate streaming, the
-                        content
-                        is available server-side at multiple resolutions (3 in our case for the sake of the example),
-                        with each
-                        version fractioned according to the minimal segment length (in time). With each bandwidth
-                        variation, the
-                        adequat video segment is sent to the client. If the bandwidth is high, a high quality segment is
-                        sent, if
-                        it is low, it will then be a low quality segment. This method allows the user to watch a
-                        multi-resolution
-                        video with very little chances of it buffering.
+                    <p class="card-text">The user's bandwith can be highly variable, and in the case of non-adaptive bitrate
+                      streaming, the client manually choses the video quality settings regardless of her/his internet connection
+                      quality. This can be quite off-putting and annoying, especially for picky users who do not wish to
+                      re-set the video resolution whenever it starts buffering. With adaptive bitrate streaming, the content
+                      is available server-side at multiple resolutions (3 in our case for the sake of the example), with each
+                      version fractioned according to the minimal segment length (in time). With each bandwidth variation, the
+                      adequat video segment is sent to the client. If the bandwidth is high, a high quality segment is sent, if
+                      it is low, it will then be a low quality segment. This method allows the user to watch a multi-resolution
+                      video with very little chances of it buffering.
                     </p>
                 </div>
 
@@ -157,51 +142,39 @@
                     <p class="card-text text-justify">
                         It encapsulates MP3/AAC audio and MP4/FLV video multimedia streams that can be decoded on the
                         web browser
-                        by a Flash plugin. Flash Player is a browser plugin used to run applications inside a webpage.
-                        The
+                        by a Flash plugin. Flash Player is a browser plugin used to run applications inside a webpage. The
                         Flash .swf
                         application uses a script to load the RTMP data and the Flash Player system automatically
                         decodes
-                        it into live audio/video. To ensure smooth video streaming ,regardless of bandwidth
-                        fluctuations,
+                        it into live audio/video. To ensure smooth video streaming ,regardless of bandwidth fluctuations,
                         RTMP continuously maintains the connection between the streaming server and the video player
-                        during the process. Audio, video and others data are delivered separately and are franctionned
-                        into
-                        segments by the protocol in order to achieve a consistent transmition. These segments have the
-                        same
+                        during the process. Audio, video and others data are delivered separately and are franctionned into
+                        segments by the protocol in order to achieve a consistent transmition. These segments have the same
                         length
                         and allow for a stream/bandwidth adaptation. <br>
-                        Nowadays, after the deprecation of flash, RTMP is not used for content delivery to end users in
-                        a CDN (content delivery network) anymore. RTMP streams the content to a server instead, that in
-                        turn transforms it into HLS(cf figure 3).
+                        Nowadays, after the deprecation of flash, RTMP is not used for content delivery to end users in a CDN (content delivery network) anymore. RTMP streams the content to a server instead, that in turn transforms it into HLS(cf figure 3).
                     </p>
                 </div>
             </div>
             <div class="card" id="cardmiddle">
-                <div class="card-body">
+                <div class="card-body" >
                     <h5 class="card-title text-center">Assets and drawbacks</h5>
                     <h6>Advantages</h6>
                     <p class="card-text text-justify">
-                        RTMP is useful for streaming live content with low latency, offering adaptative bitrate
-                        streaming (ABS).
+                        RTMP is useful for streaming live content with low latency, offering adaptative bitrate streaming (ABS).
                         It provides the best quality according to the viewers internet speed.
                         <br>
-                        There is, in fact, a direct pointer from the server to the player. The latter doesn’t rely on
-                        any buffer to cache files locally on the
+                        There is, in fact, a direct pointer from the server to the player. The latter doesn’t rely on any buffer to cache files locally on the
                         user's computer. The server and the player are, thus, in a constant connection with adaptative
                         bitrate streaming and monitoring can provide
-                        precise and specific statistics about what a user did during the video. Data is diretly fetched
-                        by the player from the said pointer.
+                        precise and specific statistics about what a user did during the video. Data is diretly fetched by the player from the said pointer.
                     </p>
                     <h6>Disadvantages</h6>
                     <p class="card-text text-justify">
-                        Major RTMP drawbacks, already mentionned in the introduction, are that it cannot be run on
-                        iDevices and HTML5 cannot natively play RTMP.
-                        Due to its default usage of 1935 port, RTMP is not accessible when restrictive firewalls are
-                        working.
+                        Major RTMP drawbacks, already mentionned in the introduction, are that it cannot be run on iDevices and HTML5 cannot natively play RTMP.
+                        Due to its default usage of 1935 port, RTMP is not accessible when restrictive firewalls are working.
                         RTMP is vulnerable to bandwidth issue, the stream requires a minimum internet speed.
-                        RTMP is TCP-based and uses anicast and not multicast. This can be a scaling issue, because the
-                        number
+                        RTMP is TCP-based and uses anicast and not multicast. This can be a scaling issue, because the number
                         of users is equal to the number of opened connexions.
 
                         </optgroup>
@@ -215,13 +188,11 @@
                         RTMP's main feature is to provide an adaptive bitrate streaming service for users to stream
                         live content to several platforms(cf figure 4). In the case of video
                         streaming, the streamer
-                        may need to communicate with viewers. She/he can ask the service provider for access to viewer
-                        chats and live comments.
+                        may need to communicate with viewers. She/he can ask the service provider for access to viewer chats and live comments.
                         This requires a low-latency Real-Time Messaging Protocol, RTMP. Flash player may be discontinued
                         but the gaming community still uses it. On the users side, they do not want a data to be
                         temporarily
-                        stored in the dedicated browser folder in their computers and would rather stay synchronized
-                        with
+                        stored in the dedicated browser folder in their computers and would rather stay synchronized with
                         the stream and miss lost frames. The users prefer low quality videos over a laggy stream,
                         their priority is to be able to see what the player is doing and comment it in as little time
                         as possible. This protocol’s pointer is always on sync with the stream, therefore, it does not
@@ -249,13 +220,10 @@
             </div>
             <div class="card-body">
                 <h2 class="card-title">Introduction</h2>
-                The following section describes the project deployment, with sufficient details on each step. You need
-                at least two
+                The following section describes the project deployment, with sufficient details on each step. You need at least two
                 computers: one for the deployment of the source and the server and another one for the client.
                 <img src="./images/architecture.png">
-                <center>
-                    <h5 class="card-title">Figure 5</h5>
-                </center>
+                <center><h5 class="card-title">Figure 5</h5></center>
                 <br>
                 In figure 5, the basic RTMP architecture is presented. It involves three actors:
                 <ul>
@@ -264,8 +232,7 @@
                     <li>An <b>RTMP Media Server</b>: the RTMP stream reciever. It converts the stream into
                         another format which is supported by HTML5 and sends it to clients who request the stream.</li>
                     <li>A <b>client</b>: the stream viewer. She/he requests the stream from the RTMP Media
-                        Server andreceives the RTMP stream converted in a specific format. The stream is then displayed
-                        in browser webpage. </li>
+                        Server andreceives the RTMP stream converted in a specific format. The stream is then displayed in browser webpage. </li>
                 </ul>
                 <br>
                 In our case, the conversion is not achieved by the RTMP Media Server but by the player available in the
@@ -275,19 +242,17 @@
                 <h2 class="card-title">Prerequisites</h2>
                 <ul>
                     <li>Retrieve the folder on our Github page: <a
-                            href="https://github.com/VideoStreamingEnseirb/RTMP">RTMP
-                            project</a>.</li>
+                        href="https://github.com/VideoStreamingEnseirb/RTMP">RTMP
+                        project</a>.</li>
                     <li>If you use at least two computers to test our project: the client and the source have to be in
                         the same sub-network in order to be reachable.</li>
-                    <li>Install the latest version of <a href="https://nodejs.org/en/download/">Node</a> and type the
-                        following lines in project folder command window:
+                    <li>Install the latest version of <a href="https://nodejs.org/en/download/">Node</a> and type the following lines in project folder command window:
                         <code>npm install</code> and <code>npm install node-media-server</code> to install the required
                         packages.</li>
                     <li>
                         <p class="card-text">Install <a href="https://obsproject.com/fr">OBS</a>. It is an open-source
                             software used for
-                            video recording and live streaming. It will be utilized to push the RTMP source from your
-                            webcam
+                            video recording and live streaming. It will be utilized to push the RTMP source from your webcam
                             to the
                             RTMP server.
                     </li>
@@ -337,20 +302,20 @@
                 server.
                 <img src="images/modif_code.png" style="width:70%">
                 Once it is done, reload the page and your stream will be available on the page!
-            </div>
         </div>
-        <script>
-            if (flvjs.isSupported()) {
-                var videoElement = document.getElementById('videoElement');
-                var flvPlayer = flvjs.createPlayer({
-                    type: 'flv',
-                    url: 'http://localhost:8000/live/STREAM_NAME.flv'
-                });
-                flvPlayer.attachMediaElement(videoElement);
-                flvPlayer.load();
-                flvPlayer.play();
-            }
-        </script>
+    </div>
+    <script>
+        if (flvjs.isSupported()) {
+            var videoElement = document.getElementById('videoElement');
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'http://localhost:8000/live/STREAM_NAME.flv'
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+        }
+    </script>
 </body>
 
 </html>
